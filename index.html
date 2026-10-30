@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskXTracker | Academic Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .admin-hidden { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- Navigation -->
+    <nav class="bg-blue-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wider"><i class="fas fa-book-open mr-2"></i>TaskXTracker</h1>
+            <button onclick="toggleAdmin()" class="bg-blue-800 hover:bg-blue-700 px-4 py-2 rounded text-sm font-semibold transition">
+                <i class="fas fa-lock mr-1"></i> Admin
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Website Content -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <header class="bg-blue-100 py-12 px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-900 mb-4">Your Academic Tasks, Completed.</h2>
+            <p class="text-lg text-blue-700 max-w-2xl mx-auto mb-6">High-quality, timely completion of assignments, projects, practicals, and school copies at the best prices.</p>
+            <a href="#order-form" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition">Order Now</a>
+        </header>
+
+        <!-- Services Section -->
+        <section class="max-w-6xl mx-auto px-4 py-12">
+            <h3 class="text-2xl font-bold text-center mb-8">Our Services</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center border-t-4 border-blue-500">
+                    <i class="fas fa-file-alt text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Assignments</h4>
+                    <p class="text-sm text-slate-600">Well-researched and neatly written assignments.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center border-t-4 border-blue-500">
+                    <i class="fas fa-project-diagram text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Projects</h4>
+                    <p class="text-sm text-slate-600">Complete project files and models for all subjects.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center border-t-4 border-blue-500">
+                    <i class="fas fa-flask text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">Practicals</h4>
+                    <p class="text-sm text-slate-600">Accurate practical records and lab manuals.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center border-t-4 border-blue-500">
+                    <i class="fas fa-book text-3xl text-blue-500 mb-3"></i>
+                    <h4 class="font-bold text-lg mb-2">School Copies</h4>
+                    <p class="text-sm text-slate-600">Neat and complete notebook writing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Order Form Section -->
+        <section id="order-form" class="bg-white py-12 px-4 shadow-inner">
+            <div class="max-w-xl mx-auto bg-slate-50 p-8 rounded-xl shadow-md border border-slate-200">
+                <h3 class="text-2xl font-bold text-center mb-6 text-blue-800">Place an Order</h3>
+                <form id="taskForm" onsubmit="submitOrder(event)">
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Your Name</label>
+                        <input type="text" id="customerName" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Your WhatsApp Number</label>
+                        <input type="tel" id="customerPhone" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Task Type</label>
+                        <select id="taskType" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                            <option>Assignment</option>
+                            <option>Project</option>
+                            <option>Practical File</option>
+                            <option>School Copy</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-sm font-bold mb-2">Task Details & Subject</label>
+                        <textarea id="taskDetails" rows="3" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-sm font-bold mb-2">Deadline</label>
+                        <input type="date" id="deadline" required class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition">Submit Request</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-slate-800 text-white text-center py-6">
+            <p class="mb-2">TaskXTracker &copy; 2026</p>
+            <p><i class="fab fa-whatsapp text-green-400 mr-1"></i> Contact: <strong>6267078855</strong></p>
+        </footer>
+    </div>
+
+    <!-- Admin Dashboard (Hidden by default) -->
+    <div id="admin-content" class="admin-hidden max-w-6xl mx-auto px-4 py-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-blue-900">Admin Dashboard</h2>
+            <button onclick="clearOrders()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded text-sm font-semibold">Clear All Orders</button>
+        </div>
+        <div class="bg-white rounded-lg shadow-md overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-blue-100 text-blue-900">
+                        <th class="p-3 border-b">Date</th>
+                        <th class="p-3 border-b">Name</th>
+                        <th class="p-3 border-b">Task</th>
+                        <th class="p-3 border-b">Details</th>
+                        <th class="p-3 border-b">Deadline</th>
+                        <th class="p-3 border-b">Contact</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                    <!-- Orders will load here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Load orders from LocalStorage
+        let orders = JSON.parse(localStorage.getItem('taskOrders')) || [];
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const newOrder = {
+                date: new Date().toLocaleDateString(),
+                name: document.getElementById('customerName').value,
+                phone: document.getElementById('customerPhone').value,
+                type: document.getElementById('taskType').value,
+                details: document.getElementById('taskDetails').value,
+                deadline: document.getElementById('deadline').value
+            };
+            orders.push(newOrder);
+            localStorage.setItem('taskOrders', JSON.stringify(orders));
+            alert("Order submitted successfully! We will contact you soon.");
+            document.getElementById('taskForm').reset();
+            renderOrders();
+        }
+
+        function toggleAdmin() {
+            const main = document.getElementById('main-content');
+            const admin = document.getElementById('admin-content');
+            if(admin.classList.contains('admin-hidden')) {
+                main.classList.add('admin-hidden');
+                admin.classList.remove('admin-hidden');
+                renderOrders();
+            } else {
+                admin.classList.add('admin-hidden');
+                main.classList.remove('admin-hidden');
+            }
+        }
+
+        function renderOrders() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '';
+            
+            if(orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-500">No orders yet.</td></tr>';
+                return;
+            }
+
+            // Reverse to show newest first
+            [...orders].reverse().forEach(order => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 border-b";
+                tr.innerHTML = `
+                    <td class="p-3 text-sm">${order.date}</td>
+                    <td class="p-3 font-semibold">${order.name}</td>
+                    <td class="p-3"><span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">${order.type}</span></td>
+                    <td class="p-3 text-sm">${order.details}</td>
+                    <td class="p-3 font-semibold text-red-600">${order.deadline}</td>
+                    <td class="p-3">
+                        <a href="https://wa.me/91${order.phone}" target="_blank" class="text-green-600 hover:text-green-800 font-bold">
+                            <i class="fab fa-whatsapp mr-1"></i>${order.phone}
+                        </a>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function clearOrders() {
+            if(confirm("Are you sure you want to delete all orders?")) {
+                orders = [];
+                localStorage.setItem('taskOrders', JSON.stringify(orders));
+                renderOrders();
+            }
+        }
+    </script>
+</body>
+</html>
